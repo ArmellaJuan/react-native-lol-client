@@ -2,9 +2,6 @@
 #
 .DS_Store
 
-#Native folders for now
-android/
-ios/
 
 # Xcode
 #

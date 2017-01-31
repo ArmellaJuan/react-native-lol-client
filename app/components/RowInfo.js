@@ -22,7 +22,7 @@ export default class RowInfo extends Component{
 
 RowInfo.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.node,
   fontSize: PropTypes.number
 };
 
