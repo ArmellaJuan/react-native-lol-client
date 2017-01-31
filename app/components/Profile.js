@@ -24,7 +24,7 @@ export default class Profile extends Component {
     Api.obtainSummonerData(this.state.name)
     .then( 
       (response) => {
-        this.setState({ summonerFound:true , summonerId: response[this.state.name.toLowerCase()].id, profileIconId: response[this.state.name.toLowerCase()].profileIconId });
+        this.setState({ summonerFound:true , summonerId: response[this.state.name.trim().toLowerCase()].id, profileIconId: response[this.state.name.toLowerCase()].profileIconId });
         Api.obtainSummonerLeagueData(this.state.summonerId).then(
           (response) => {
             var summonerData =  response[this.state.summonerId][0];
