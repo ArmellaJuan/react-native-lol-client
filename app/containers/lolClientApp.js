@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
 } from 'react-native';
 
-import MatchsContainer from '../containers/MatchsContainer';
+import GamesContainer from '../containers/GamesContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 
 import '../util/titleize';
@@ -70,7 +70,7 @@ export default class LolClientApp extends Component {
           }
           if(route.id == 'matchHistory'){
             return <View style={ styles.scene } >
-                       <MatchsContainer />
+                       <GamesContainer />
                    </View>;
           }
         }

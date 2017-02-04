@@ -1,40 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, ActivityIndicator, View, Text, Image, ListView } from 'react-native';
 import RowInfo from './RowInfo';
-import Api from '../api/API';
 
-export default class Matchs extends Component {
+export default class Games extends Component {
   constructor(props) {
     super(props);
-  }
-
-  updateMatchImage(index, championImg){
-    var newMatches = [];
-    newMatches = this.state.matches.slice();
-    newMatches[index] = {
-      ...newMatches[index],
-      championImg: championImg,
-    };
-
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(newMatches),
-      matches: newMatches
-    });
-  } 
-
-  updateMatches(response){
-
-    response.games.forEach( (game, index) => {
-      Api.championInfo(game.championId).then( (response) => { this.updateMatchImage(index,`http://ddragon.leagueoflegends.com/cdn/7.2.1/img/champion/${response.key}.png`); },
-      () => {} );
-    });
-
   }
 
   componentDidMount(){
     this.props.onRequestRecentGames(this.props.summoner.id);
   }
 
+  componentWillUnmount(){
+    this.props.onExit();
+  }
 
   renderList(){
 
@@ -96,12 +75,13 @@ export default class Matchs extends Component {
 }
 
 
-Matchs.propTypes = {
+Games.propTypes = {
   summoner: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   onRequestRecentGames: PropTypes.func.isRequired,
   dataSource: PropTypes.object,
-  matches: PropTypes.array
+  games: PropTypes.array,
+  onExit: PropTypes.func
 };
 
 

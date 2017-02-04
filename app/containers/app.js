@@ -3,7 +3,6 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import * as actions from '../actions/actions';
 import * as reducers from '../reducers';
 import LoLClientApp from './lolClientApp';
 

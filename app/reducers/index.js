@@ -1,7 +1,7 @@
 import summoner from './summoner';
-import matchs from './matchs';
+import games from './games';
 
 export {
   summoner,
-  matchs
+  games
 };

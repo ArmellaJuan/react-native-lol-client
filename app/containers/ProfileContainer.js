@@ -1,4 +1,4 @@
-import * as actions from '../actions/actions';
+import * as summonerActions from '../actions/summoner';
 import { connect } from 'react-redux';
 
 import Profile from '../components/Profile';
@@ -17,13 +17,13 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchSummoner: (name) => {
-      dispatch(actions.fetchSummoner(name));
+      dispatch(summonerActions.fetchSummoner(name));
     },
     onChangeSummonerName: (name) =>{
-      dispatch(actions.changeSummonerName(name));
+      dispatch(summonerActions.changeSummonerName(name));
     },
     onRecentGames: () =>{
-      dispatch(actions.requestRecentGames());
+      dispatch(summonerActions.requestRecentGames());
     }
   };
 };
