@@ -2,15 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet, ActivityIndicator, View, Text, Image, ListView } from 'react-native';
 import RowInfo from './RowInfo';
 import Api from '../api/API';
-import dateFormat from 'dateformat';
-import Util from './../util/Util';
 
 export default class Matchs extends Component {
   constructor(props) {
     super(props);
-    this.state = { rendered: false};
-    this.updateMatches = this.updateMatches.bind(this);
-    this.updateMatchImage = this.updateMatchImage.bind(this);
   }
 
   updateMatchImage(index, championImg){
@@ -27,25 +22,7 @@ export default class Matchs extends Component {
     });
   } 
 
-  parseSubType(value){
-    return  value.split('_').join(' ').titleize();
-  }
-
   updateMatches(response){
-
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => JSON.stringify(r1) !== JSON.stringify(r2) });
-    let matches =  response.games.map( (value) => {
-      return { type: this.parseSubType(value.subType) , victory: value.stats.win, 
-        kills: Util.parseNumber(value.stats.championsKilled), assists: Util.parseNumber(value.stats.assists), deaths: Util.parseNumber(value.stats.numDeaths) , 
-        date: dateFormat(new Date(value.createDate), 'dd/mm/yyyy'), timePlayed: this.formatSeconds(value.stats.timePlayed  )  };
-    } 
-		);
-
-    this.setState( {
-      dataSource: ds.cloneWithRows(matches),
-      matches: matches,
-      rendered: true
-    });
 
     response.games.forEach( (game, index) => {
       Api.championInfo(game.championId).then( (response) => { this.updateMatchImage(index,`http://ddragon.leagueoflegends.com/cdn/7.2.1/img/champion/${response.key}.png`); },
@@ -55,18 +32,23 @@ export default class Matchs extends Component {
   }
 
   componentDidMount(){
-
-    Api.recentGames(this.props.summonerData.id).then(  this.updateMatches , () => {} );
-
+    this.props.onRequestRecentGames(this.props.summoner.id);
   }
 
-  formatSeconds(seconds)
-	{
-    let minutes = Math.floor(seconds / 60);
-    seconds = seconds % 60;
-    return `${minutes > 0 ? minutes + 'm' : ''} ${seconds}s`;
-  }
 
+  renderList(){
+
+    if(!this.props.loading){
+      let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => JSON.stringify(r1) !== JSON.stringify(r2) });
+      let dataSource = ds.cloneWithRows(this.props.games);
+      return (<ListView
+                style= { styles.matchs }
+                dataSource={dataSource}
+                renderRow={this.renderRow }
+              />);
+    }
+
+  }
 
   renderRow(rowData) {
     return (
@@ -94,20 +76,19 @@ export default class Matchs extends Component {
   } 
 
   render() {
-    if (this.state.rendered ){
+    if (this.props.loading ){
       return (
-              <ListView
-                style= { styles.matchs }
-                dataSource={this.state.dataSource}
-                renderRow={this.renderRow }
-              />
+        <View style= { styles.matchs }> 
+          <ActivityIndicator
+            style={[styles.loading]}
+            />
+        </View>
       );
     } else {
-      return (<View style= { styles.matchs }> 
-						<ActivityIndicator
-              style={[styles.loading]}
-              />
-            </View>
+      return (
+        <View style= { styles.matchs }> 
+         { this.renderList() }     
+        </View>
       );
     }
   }
@@ -116,7 +97,11 @@ export default class Matchs extends Component {
 
 
 Matchs.propTypes = {
-  summonerData: PropTypes.object
+  summoner: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  onRequestRecentGames: PropTypes.func.isRequired,
+  dataSource: PropTypes.object,
+  matches: PropTypes.array
 };
 
 

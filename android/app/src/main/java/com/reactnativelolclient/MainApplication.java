@@ -1,4 +1,4 @@
-package com.paisalolclient;
+package com.reactnativelolclient;
 
 import android.app.Application;
 import android.util.Log;

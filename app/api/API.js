@@ -32,6 +32,10 @@ class Api {
     return "https://global.api.pvp.net/api/lol/";
   }
 
+  static profileIconUrl(iconId){
+    return `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/${iconId}.png`;
+  }
+
   static xhr(url) {
     const keyParam = '?api_key=403fb85e-20f7-4c8e-ac5c-a47402a2ac7c';
     const finalUrl = `${url}${keyParam}`;
