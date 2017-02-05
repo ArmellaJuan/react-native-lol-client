@@ -1,3 +1,5 @@
+import { PixelRatio } from 'react-native';
+
 class Util {
   static parseNumber(number) {
     return number ? number : 0;
@@ -12,6 +14,10 @@ class Util {
 
   static parseSubType(value){
     return value.split('_').join(' ').titleize();
+  }
+
+  static pixelSizeFor(layoutSize) {
+    return Math.round(layoutSize + PixelRatio.get());
   }
 
 }

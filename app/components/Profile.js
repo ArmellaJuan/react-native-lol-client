@@ -13,7 +13,7 @@ export default class Profile extends Component {
 
   onMatchHistory() {
     this.props.navigator.push({
-      title:this.props.name + "'s matches",
+      title:this.props.name + "'s recent games",
       id: 'matchHistory'
     }); 
   }

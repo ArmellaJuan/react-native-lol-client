@@ -11,6 +11,8 @@ import {
 
 import GamesContainer from '../containers/GamesContainer';
 import ProfileContainer from '../containers/ProfileContainer';
+import GameDetailContainer from '../containers/GameDetailContainer';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import '../util/titleize';
 
@@ -34,7 +36,7 @@ var NavigationBarRouteMapper = {
     } else {
       return (
         <TouchableHighlight underlayColor='transparent' style={ styles.back }  onPress={() => navigator.pop()}>
-          <Text  style={ {color: 'white'} } >Back</Text>
+          <Icon name="chevron-thin-left" size={20} color="white" />
         </TouchableHighlight>
       );
     } 
@@ -65,12 +67,19 @@ export default class LolClientApp extends Component {
             return  <View style={ styles.scene } >
                       <ProfileContainer
                         navigator={ navigator }
-                           /> 
+                            /> 
                    </View>;
           }
           if(route.id == 'matchHistory'){
             return <View style={ styles.scene } >
-                       <GamesContainer />
+                       <GamesContainer
+                          navigator={ navigator }
+                            />
+                   </View>;
+          }
+          if(route.id == 'gameDetail'){
+            return <View style={ styles.scene } >
+                     <GameDetailContainer />
                    </View>;
           }
         }

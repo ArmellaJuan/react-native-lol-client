@@ -4,7 +4,7 @@ const initialState = {
   loading: true
 };
 
-function updateGameUrl(games, action) {
+function updateGameChampionData(games, action) {
   
   return games.map( (game, index) => {
     if(index !== action.index) {
@@ -13,7 +13,7 @@ function updateGameUrl(games, action) {
 
     return {
       ...game,
-      championImg: action.url
+      champion: action.champion
     };    
 
   });
@@ -40,13 +40,20 @@ export default function matchs(state = initialState, action = {}) {
       loading: true
     };  
 
-  case types.RECEIVE_GAME_IMAGE:
+  case types.RECEIVE_CHAMPION:
 
     return {
       ...state,
-      games: updateGameUrl(state.games,action)
+      games: updateGameChampionData(state.games,action)
 
     };
+
+  case types.SELECT_GAME:
+    
+    return {
+      ...state,
+      selectedGameIndex: action.index
+    }; 
 
   default:
     return state;

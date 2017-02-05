@@ -21,7 +21,15 @@ class Api {
   }
 
   static championInfo(id){
-    return  this.xhr(`${this.globalUrl()}static-data/na/v1.2/champion/${id}`);
+    return  this.xhr(`${this.globalUrl()}static-data/na/v1.2/champion/${id}`).then( (response) =>{
+
+      let championInfo ={
+        ...response,
+        imageUrl: `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/champion/${response.key}.png`,
+      };
+
+      return championInfo;
+    });
   }
 
   static naUrl(){
@@ -34,6 +42,10 @@ class Api {
 
   static profileIconUrl(iconId){
     return `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/${iconId}.png`;
+  }
+
+  static gameDetail(id){
+    return  this.xhr(`${this.naUrl()}v2.2/match/${id}`);
   }
 
   static xhr(url) {

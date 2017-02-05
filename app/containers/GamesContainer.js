@@ -20,6 +20,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     onExit: () => {
       dispatch(gamesActions.clearRecentGames());
+    },
+    onGameSelected: (navigator, gameIndex) =>{
+      
+      navigator.push({
+        title: 'Game Detail',
+        id: 'gameDetail'
+      });
+
+      dispatch(gamesActions.selectGame(gameIndex));
     }
   };
 };

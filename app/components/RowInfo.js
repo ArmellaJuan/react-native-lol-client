@@ -11,8 +11,8 @@ export default class RowInfo extends Component{
   render() {
     return (
         <View style = {styles.rowInfo} >
-          <Text style = { [styles.rowLabel,  this.props.fontSize? { fontSize: this.props.fontSize } : {} ] }>{this.props.label}</Text>
-          <Text style = { [styles.rowValue, this.props.fontSize? { fontSize: this.props.fontSize } : {} ] }>{this.props.value}</Text>
+          <Text style = { [styles.rowLabel,  this.props.fontSize? { fontSize: this.props.fontSize } : {}, this.props.labelStyle? this.props.labelStyle : {}  ] }>{this.props.label}</Text>
+          <Text style = { [styles.rowValue, this.props.fontSize? { fontSize: this.props.fontSize } : {}, this.props.valueStyle? this.props.valueStyle : {} ] }>{this.props.value}</Text>
         </View>
     );
   }
@@ -23,7 +23,9 @@ export default class RowInfo extends Component{
 RowInfo.propTypes = {
   label: PropTypes.string,
   value: PropTypes.node,
-  fontSize: PropTypes.number
+  fontSize: PropTypes.number,
+  valueStyle: PropTypes.number,
+  labelStyle: PropTypes.number
 };
 
 
@@ -31,14 +33,15 @@ RowInfo.propTypes = {
 const styles = StyleSheet.create({
   rowInfo: {
     flexDirection: 'row',
-    flex: 1
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   rowLabel: {
-    color: 'dodgerblue',
     flex:1,
     fontWeight: 'bold',
   },
   rowValue: {
-    flex:1
+    flex:1,
   },
 });
