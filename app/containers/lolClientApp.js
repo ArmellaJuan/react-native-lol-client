@@ -93,6 +93,7 @@ export default class LolClientApp extends Component {
 var styles = StyleSheet.create({
   navBar: {
     backgroundColor: 'dodgerblue',
+    elevation: 3
   },
   titleStyle: {
     color: 'white'

@@ -39,7 +39,6 @@ export function requestRecentGames(summonerId){
 
       let games = response.games.map( (value, index) => {
         return { 
-          ...value,
           id: value.gameId,
           type: Util.parseSubType(value.subType) , 
           victory: value.stats.win, 
@@ -49,7 +48,12 @@ export function requestRecentGames(summonerId){
           date: new timeago().format(new Date(value.createDate)), 
           timePlayed: Util.formatSeconds(value.stats.timePlayed),
           index: index,
-          champion: { name: null, imageUrl: null},
+          champion: { name: null, imageUrl: null},    
+          totalDamageDealt: value.stats.totalDamageDealt,
+          totalDamageDealtToChampions: value.stats.totalDamageDealtToChampions,
+          physicalDamageDealtToChampions: value.stats.physicalDamageDealtToChampions,
+          magicDamageDealtToChampions: value.stats.magicDamageDealtToChampions,
+          fellowPlayers: value.fellowPlayers
         };
       }); 
 

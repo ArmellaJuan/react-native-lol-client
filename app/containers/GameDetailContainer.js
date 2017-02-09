@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRequestGameDetail: (gameId) => {
-      dispatch(gameDetailActions.requestGameDetail(gameId));
+    onRequestGameDetail: (game) => {
+      dispatch(gameDetailActions.requestGameDetail(game));
     },
     onExit: () => {
       dispatch(gameDetailActions.clearSelectedGame());

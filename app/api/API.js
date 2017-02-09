@@ -12,6 +12,11 @@ class Api {
     return  this.xhr(`${this.naUrl()}v1.4/summoner/by-name/${name}`);
   }
 
+  static obtainSumonersData(ids){
+    let idsParam = ids.toString();
+    return  this.xhr(`${this.naUrl()}v1.4/summoner/${idsParam}`);
+  }
+
   static obtainSummonerLeagueData(id) {
     return  this.xhr(`${this.naUrl()}v2.5/league/by-summoner/${id}/entry`);
   }
@@ -42,6 +47,10 @@ class Api {
 
   static profileIconUrl(iconId){
     return `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/${iconId}.png`;
+  }
+
+  static itemUrl(itemId){
+    return `http://ddragon.leagueoflegends.com/cdn/7.3.1/img/item/${itemId}.png`;
   }
 
   static gameDetail(id){

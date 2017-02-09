@@ -5,7 +5,6 @@ const initialState = {
 };
 
 function updateGameChampionData(games, action) {
-  
   return games.map( (game, index) => {
     if(index !== action.index) {
       return game;
@@ -41,6 +40,10 @@ export default function matchs(state = initialState, action = {}) {
     };  
 
   case types.RECEIVE_CHAMPION:
+
+    if(state.games == null){
+      return state;
+    }
 
     return {
       ...state,

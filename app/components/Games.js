@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, ActivityIndicator,TouchableHighlight, View, Text, Image, ListView } from 'react-native';
+import { StyleSheet, ActivityIndicator, ScrollView, TouchableHighlight, View, Text, Image, ListView } from 'react-native';
+
 import RowInfo from './RowInfo';
+import Kda from './Kda';
+
 import Icon from 'react-native-vector-icons/Entypo';
 import Util from '../util/Util.js';
 
@@ -51,11 +54,7 @@ export default class Games extends Component {
               <RowInfo valueStyle={rowData.victory? styles.victoryLabel : styles.defeatLabel} fontSize={Util.pixelSizeFor(10)} label='Result' value={rowData.victory? 'Victory' : 'Defeat'} /> 
               <View style={ styles.infoRow } >
                 <Text style={[ styles.infoLabel, { flex: 1 } ]} >KDA</Text>
-                <View style={ { flex: 1, flexDirection: 'row' } }>
-                  <Text style={[ styles.kdaLabel, styles.victoryLabel ]}>{rowData.kills}</Text><Text style={ styles.kdaLabel }>/</Text>
-                  <Text style={[ styles.kdaLabel, styles.defeatLabel ]}>{rowData.deaths}</Text><Text style={ styles.kdaLabel }>/</Text>
-                  <Text style={[ styles.kdaLabel, styles.victoryLabel ]}>{rowData.assists}</Text>
-                </View>
+                <Kda kills={rowData.kills} deaths={rowData.deaths} assists={rowData.assists} />
               </View>
 
             </View>
@@ -70,23 +69,24 @@ export default class Games extends Component {
   } 
 
   render() {
-    if (this.props.loading ){
-      return (
-        <View style= { styles.matchs }> 
-          <ActivityIndicator
-            style={[styles.loading]}
-            />
+    return (
+        <View style={styles.background}>
+           <ScrollView >
+             {this.props.loading ? (
+                  <View>
+                    <ActivityIndicator
+                    style={[styles.loading]}
+                    />
+                  </View>
+                  ) : (
+                     <View style= { styles.scrollViewContainer } >
+                      { this.renderList() }     
+                    </View>
+                )}
+          </ScrollView>
         </View>
-      );
-    } else {
-      return (
-        <View style= { styles.matchs }> 
-         { this.renderList() }     
-        </View>
-      );
-    }
+    );
   }
-
 }
 
 
@@ -102,10 +102,15 @@ Games.propTypes = {
 
 
 const styles = StyleSheet.create({
-  matchs: {
+  scrollViewContainer:{
+    padding: 20,
+  },
+  scrollView:{
+    padding: 10 
+  },
+  background: {
     flex: 1,
     backgroundColor: 'aliceblue',
-    padding: 10,
   },
   infoRow:{
     flexDirection: 'row',
@@ -115,10 +120,6 @@ const styles = StyleSheet.create({
     flex:1,
     fontWeight: 'bold',
     fontSize: Util.pixelSizeFor(10)
-  },
-  kdaLabel:{
-    fontSize: Util.pixelSizeFor(10),
-    fontWeight: 'bold'
   },
   rowContainer:{
     margin: 5,
