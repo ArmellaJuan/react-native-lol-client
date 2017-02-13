@@ -80,10 +80,22 @@ function processItemsUrl(gameDetail){
   gameDetail.participants.forEach( (participant) => {
 
     for(let i=0; i<=6; i++){
-      let itemAttributeName = [`item${i}`];
+      let itemAttributeName = `item${i}`;
       let itemId = participant.stats[itemAttributeName];
       participant.stats[itemAttributeName] = { id: itemId, imageUrl: Api.itemUrl(itemId)};
     }
 
   });
+}
+
+function processMasteriesUrl(gameDetail){
+
+   gameDetail.participants.forEach( (participant) => {
+
+    for(let i=1; i<=2; i++){
+      participant[`spell${i}Url`] = Api.spellUrl( participant[`spell${i}Id`]);
+    }
+
+  });
+
 }

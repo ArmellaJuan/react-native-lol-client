@@ -55,7 +55,7 @@ export default class Profile extends Component {
             </ScrollView>
             <Button
                     onPress={ () => this.props.onFetchSummoner(this.props.name) }
-                    title="Fetch Data"
+                    title="Check Summoner"
                     color="dodgerblue"
                   />
           </View>
@@ -66,7 +66,7 @@ export default class Profile extends Component {
 
 Profile.propTypes = {
   navigator: PropTypes.object.isRequired,
-  onChangeSummonerName: PropTypes.func.isRequired,
+  onChangeSearchSummonerName: PropTypes.func.isRequired,
   onFetchSummoner: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   found: PropTypes.bool.isRequired,

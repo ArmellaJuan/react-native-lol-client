@@ -25,6 +25,10 @@ export default function matchs(state = initialState, action = {}) {
 
   case types.RECEIVE_RECENT_GAMES:
 
+
+    console.debug(action.games);
+    console.debug(JSON.stringify(action.games));
+
     return {
       ...state,
       games: action.games,

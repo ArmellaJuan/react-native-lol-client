@@ -14,9 +14,9 @@ export function receiveSummoner(summoner){
   };
 }
 
-export function changeSummonerName(newName){
+export function changeSearchSummonerName(newName){
   return{
-    type: types.CHANGE_SUMMONER_NAME,
+    type: types.CHANGE_SEARCH_SUMMONER_NAME,
     name: newName
   };
 }

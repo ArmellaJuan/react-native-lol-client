@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
     onFetchSummoner: (name) => {
       dispatch(summonerActions.fetchSummoner(name));
     },
-    onChangeSummonerName: (name) =>{
-      dispatch(summonerActions.changeSummonerName(name));
+    onChangeSearchSummonerName: (name) =>{
+      dispatch(summonerActions.changeSearchSummonerName(name));
     },
     onRecentGames: () =>{
       dispatch(summonerActions.requestRecentGames());

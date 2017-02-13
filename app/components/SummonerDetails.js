@@ -12,17 +12,22 @@ export default class SummonerDetails extends Component{
   }
 
   render() {
+
+    
+    let summoner = this.props.summoner;
+    let statistics = summoner.statistics;
+
     return (
         <View  style = { styles.details }>
           <View style = { styles.headerProfile} >
-            <Image style={ styles.image } source={{uri: this.props.summoner.profileIconUrl}}  />
-            <Text style ={ styles.headerText } > {this.props.summoner.name} </Text>
+            <Image style={ styles.image } source={{uri: summoner.profileIconUrl}}  />
+            <Text style ={ styles.headerText } > {summoner.name} </Text>
           </View>
-          <RowInfo labelStyle={ styles.label } label='Division Name' value={this.props.summoner.statistics.divisionName} /> 
-          <RowInfo labelStyle={ styles.label } label='Tier' value={this.props.summoner.statistics.tier} /> 
-          <RowInfo labelStyle={ styles.label } label='Wins' value={this.props.summoner.statistics.wins} /> 
-          <RowInfo labelStyle={ styles.label } label='Losses' value={this.props.summoner.statistics.losses} />
-          <RowInfo labelStyle={ styles.label } label='LP' value={this.props.summoner.statistics.leaguePoints} />
+          <RowInfo labelStyle={ [styles.label] } label='Division Name' value={statistics.divisionName} /> 
+          <RowInfo labelStyle={ [styles.label] } label='Tier' value={statistics.tier} /> 
+          <RowInfo labelStyle={ [styles.label] } label='Wins' value={statistics.wins} /> 
+          <RowInfo labelStyle={ [styles.label] } label='Losses' value={statistics.losses} />
+          <RowInfo labelStyle={ [styles.label] } label='LP' value={statistics.leaguePoints} />
           <Button
             onPress={ this.props.onMatchHistory } 
             title="Recent Games"

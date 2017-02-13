@@ -14,7 +14,7 @@ export default class Games extends Component {
 
 
   componentDidMount(){
-    this.props.onRequestRecentGames(this.props.summoner.id);
+    this.props.onRequestRecentGames(this.props.summonerId);
   }
 
   componentWillUnmount(){
@@ -35,35 +35,34 @@ export default class Games extends Component {
 
   }
 
-  renderRow(rowData) {
+  renderRow(gameData) {    
     return (
-      <TouchableHighlight style={ styles.rowContainer } onPress={ ()=>this.props.onGameSelected(this.props.navigator, rowData.index ) } underlayColor='dodgerblue' >
+      <TouchableHighlight style={ styles.rowContainer } onPress={ ()=>this.props.onGameSelected(this.props.navigator, gameData.index ) } underlayColor='dodgerblue' >
         
-        <View style={ [styles.row, rowData.victory? styles.victory : styles.defeat] } >
+        <View style={ [styles.row, gameData.victory? styles.victory : styles.defeat] } >
         
-            <View style = { {flexDirection: 'row', flex: 2.5, alignItems: 'center', justifyContent : 'center' }}>
-              <Image resizeMode='contain' style={ styles.image } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
-              <View style= { styles.matchStatFirstColumn } >
-                <Text style={ styles.matchType } >{rowData.type}</Text>
-                <Text style={ styles.timeLabel } >{rowData.date}</Text>
-                <Text style={ styles.timeLabel }>{rowData.timePlayed}</Text>
-              </View>
+            <Image resizeMode='contain' style={ styles.image } source={{uri: gameData.champion? gameData.champion.imageUrl : null } } />
+            
+            <View style= { styles.matchStatFirstColumn } >
+              <Text style={ styles.matchType } >{gameData.type}</Text>
+              <Text style={ styles.timeLabel } >{gameData.date}</Text>
+              <Text style={ styles.timeLabel }>{gameData.timePlayed}</Text>
             </View>
             
             <View style= { styles.matchStatsSecondColumn }>
-              <RowInfo valueStyle={rowData.victory? styles.victoryLabel : styles.defeatLabel} fontSize={Util.pixelSizeFor(10)} label='Result' value={rowData.victory? 'Victory' : 'Defeat'} /> 
+              <RowInfo valueStyle={ [gameData.victory? styles.victoryLabel : styles.defeatLabel] } fontSize={Util.pixelSizeFor(10)} label='Result' value={gameData.victory? 'Victory' : 'Defeat'} /> 
               <View style={ styles.infoRow } >
                 <Text style={[ styles.infoLabel, { flex: 1 } ]} >KDA</Text>
-                <Kda kills={rowData.kills} deaths={rowData.deaths} assists={rowData.assists} />
+                <Kda kills={gameData.kills} deaths={gameData.deaths} assists={gameData.assists} />
               </View>
-
             </View>
 
-            <View  style= {{ flex: 0.5 }}>
+            <View  style= { styles.toDetail }>
               <Icon name="chevron-thin-right" size={25} color="dodgerblue" />
             </View>
 
       </View>
+
     </TouchableHighlight>
     );
   } 
@@ -91,7 +90,7 @@ export default class Games extends Component {
 
 
 Games.propTypes = {
-  summoner: PropTypes.object.isRequired,
+  summonerId: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,
   onRequestRecentGames: PropTypes.func.isRequired,
   games: PropTypes.array,
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
   image: {
     width: 50, 
     height: 50,
-    flex: 1.2,
+    flex: 1,
     borderRadius: 25, 
   },
   matchType: {
@@ -178,7 +177,7 @@ const styles = StyleSheet.create({
   matchStatFirstColumn:{
     paddingRight: 10, 
     paddingLeft: 10, 
-    flex: 2,  
+    flex: 1.5,  
     alignItems: 'center', 
     justifyContent : 'center',
   },
@@ -186,4 +185,7 @@ const styles = StyleSheet.create({
     flex: 1.5, 
     alignItems: 'center',  
   },
+  toDetail:{
+    flex: 0.5 
+  }
 });

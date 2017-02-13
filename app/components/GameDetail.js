@@ -8,6 +8,7 @@ import Kda from './Kda';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
+import EIcon from 'react-native-vector-icons/Entypo';
 
 
 
@@ -31,17 +32,19 @@ export default class GameDetail extends Component {
     let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => JSON.stringify(r1) !== JSON.stringify(r2) });
     let dataSource = ds.cloneWithRows(this.props.gameDetail.participants);
 
+    let champion = this.props.game.champion;
+
     return(
       <View>
         <View style={styles.container} >
             <View style = { styles.championSection} >
-              <Image style={ styles.image } source={{uri: this.props.game.champion.imageUrl}}  />
-              <Text style ={ styles.headerText } > {this.props.game.champion.name} </Text>
+              <Image style={ styles.image } source={{uri: champion? champion.imageUrl : null}}  />
+              <Text style ={ styles.headerText } > {champion? champion.name : '' } </Text>
             </View> 
             <View>
-              <RowInfo labelStyle={ styles.label } label='Type' value={this.props.game.type} /> 
-              <RowInfo labelStyle={ styles.label } label='Duration' value={this.props.game.timePlayed} /> 
-              <RowInfo labelStyle={ styles.label } label='Creation' value={this.props.game.date} />
+              <RowInfo labelStyle={ [styles.label] } label='Type' value={this.props.game.type} /> 
+              <RowInfo labelStyle={ [styles.label] } label='Duration' value={this.props.game.timePlayed} /> 
+              <RowInfo labelStyle={ [styles.label] } label='Creation' value={this.props.game.date} />
               
               <View style={ styles.chartView } >
                 <Text style={[ styles.label, { flex: 1 } ]} >Total Damage</Text>
@@ -62,7 +65,7 @@ export default class GameDetail extends Component {
                 <Text style={[ styles.label, { flex: 1 } ]} >Magic Damage to Champions</Text>
                 <HorizontalPercentageRow maxValue={this.props.gameDetail.maxTotalMagicChampDamage} value={this.props.game.magicDamageDealtToChampions} />
               </View>
-              
+
             </View>
         </View>
         <ListView
@@ -78,30 +81,35 @@ export default class GameDetail extends Component {
     return (
       <View style={ [ styles.rowContainer, rowData.teamId == 100? styles.blueTeam : styles.redTeam ] }  >
         <View style={ [styles.row] } >
-            <View style = { {flexDirection: 'row', flex: 1.5, alignItems: 'center', justifyContent : 'center' }}>
-              <Image resizeMode='contain' style={ styles.image } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
+            <View style = { styles.playerImageColumn }>
+              <Image resizeMode='contain' style={ styles.playerChampImage } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
             </View>
-            <View style= { styles.playerStatColumn } >
 
-                <View style = { styles.statEntry }>
-                  <Icon name="coins" style= { styles.icon } color="#CCAC00" />
-                  <Text style= { styles.rowLabel }>{rowData.stats.goldEarned}</Text>
-                </View>
-
-                <View style = { styles.statEntry }>
-                  <MIcon name="location-on" style= { styles.icon } color="#5f00d3" />
-                  <Text style= { styles.rowLabel }>{rowData.stats.minionsKilled}</Text>
-                </View>
+            <View style= { [ styles.playerStatColumn, styles.playerStat1Column] } >
                 
-                <View style = { styles.statEntry }>
-                  <Icon name="sword" style= { styles.icon } color="gray" />
-                  <Kda kills={rowData.stats.kills} deaths={rowData.stats.deaths} assists={rowData.stats.assists} />
+                <View>
+
+                   <View style = { styles.statEntry }>
+                    <Icon name="coins" style= { styles.icon } color="#CCAC00" />
+                    <Text style= { styles.rowLabel }>{rowData.stats.goldEarned}</Text>
+                  </View>
+
+                  <View style = { styles.statEntry }>
+                    <MIcon name="location-on" style= { styles.icon } color="#5f00d3" />
+                    <Text style= { styles.rowLabel }>{rowData.stats.minionsKilled}</Text>
+                  </View>
+                  
+                  <View style = { styles.statEntry }>
+                    <Icon name="sword" style= { styles.icon } color="gray" />
+                    <Kda kills={rowData.stats.kills} deaths={rowData.stats.deaths} assists={rowData.stats.assists} />
+                  </View>
+
                 </View>
 
             </View>
 
             <View style= { styles.playerItems } >
-              
+
               <View style= { styles.itemsRow } >
                 <Image  style={ styles.itemImage } source={ {uri: rowData.stats.item0.imageUrl} } />
                 <Image  style={ styles.itemImage } source={ {uri: rowData.stats.item1.imageUrl} } />
@@ -116,7 +124,20 @@ export default class GameDetail extends Component {
 
             </View>
 
-            <View style= { styles.playerStatColumn } >
+            <View style= { [ styles.playerStatColumn, styles.playerStat2Column] } >
+              <View>
+
+                <View style = { styles.statEntry }>
+                    <EIcon name="eye" style= { styles.icon } color="#006400" />
+                    <Text style= { styles.rowLabel }>{rowData.stats.wardsPlaced}</Text>
+                </View>
+
+                <View style = { styles.statEntry }>
+                    <EIcon name="eye-with-line" style= { styles.icon } color="#c6443e" />
+                    <Text style= { styles.rowLabel }>{rowData.stats.wardsKilled}</Text>
+                </View>
+
+              </View>
 
             </View>
             
@@ -184,6 +205,11 @@ const styles = StyleSheet.create({
     borderRadius: 35, 
     flex: 1.2,
   },
+  playerChampImage:{
+    height: 50,
+    width: 50,
+    borderRadius: 25
+  },
   itemImage: {
     height: 30,
     width: 30,
@@ -217,6 +243,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   label: {
     color: 'dodgerblue',
@@ -234,18 +261,30 @@ const styles = StyleSheet.create({
   },
   icon:{
     fontSize: Util.pixelSizeFor(10),
-    paddingTop: 3
+    paddingTop: 3,
+    paddingRight: 2
   },
   playerStatColumn:{
     paddingRight: 10, 
     paddingLeft: 10, 
-    flex: 2,  
-    alignItems: 'flex-start', 
+    alignItems: 'center', 
     justifyContent : 'center',
+  },
+  playerStat1Column:{
+    flex:2
+  },
+  playerStat2Column:{
+    flex: 0.8
   },
   playerItems: {
     flexDirection: 'column',
-    flex: 4,
+    flex: 3
+  },
+  playerImageColumn: {
+    flexDirection: 'row', 
+    flex: 1.5, 
+    alignItems: 'center', 
+    justifyContent : 'center' 
   },
   statEntry: {
     flexDirection: 'row',

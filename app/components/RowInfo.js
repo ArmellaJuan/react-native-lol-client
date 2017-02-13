@@ -24,8 +24,8 @@ RowInfo.propTypes = {
   label: PropTypes.string,
   value: PropTypes.node,
   fontSize: PropTypes.number,
-  valueStyle: PropTypes.number,
-  labelStyle: PropTypes.number
+  valueStyle: PropTypes.array,
+  labelStyle: PropTypes.array
 };
 
 

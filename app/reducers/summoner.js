@@ -10,7 +10,7 @@ export default function summoner(state = initialState, action = {}) {
   
   switch (action.type) {
 
-  case types.CHANGE_SUMMONER_NAME:
+  case types.CHANGE_SEARCH_SUMMONER_NAME:
   
     return {
       ...state,

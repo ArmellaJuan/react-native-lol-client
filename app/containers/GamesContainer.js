@@ -7,7 +7,7 @@ import Games from '../components/Games';
 const mapStateToProps = (state) => {
   return {
     name: state.summoner.name,
-    summoner: state.summoner.summoner,
+    summonerId: state.summoner.summoner.id,
     loading: state.games.loading,
     games: state.games.games
   };
