@@ -1,6 +1,6 @@
 import * as gamesActions from '../actions/games';
 import { connect } from 'react-redux';
-
+import {Actions} from 'react-native-router-flux';
 import Games from '../components/Games';
 
 
@@ -21,14 +21,9 @@ const mapDispatchToProps = (dispatch) => {
     onExit: () => {
       dispatch(gamesActions.clearRecentGames());
     },
-    onGameSelected: (navigator, gameIndex) =>{
-      
-      navigator.push({
-        title: 'Game Detail',
-        id: 'gameDetail'
-      });
-
+    onGameSelected: (gameIndex) =>{
       dispatch(gamesActions.selectGame(gameIndex));
+      Actions.gameDetail();
     }
   };
 };

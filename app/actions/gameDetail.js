@@ -2,25 +2,14 @@ import * as types from './types';
 import Api from '../api/API';
 
 
-export function clearSelectedGame(){
+export function clearGameDetail(){
   return {
-    type: types.CLEAR_SELECTED_GAME
+    type: types.CLEAR_GAME_DETAIL
   };
 }
 
-export function receiveGameDetail(response){
+export function receiveGameDetail(gameDetail){
 
-  let gameDetail = {
-    participants: response.participants,
-    totalDamageDealt: response.totalDamageDealt,
-    totalDamageDealtToChampions: response.totalDamageDealtToChampions,
-    physicalDamageDealtToChampions: response.physicalDamageDealtToChampions,
-    magicDamageDealtToChampions: response.magicDamageDealtToChampions
-  };
-    
-  processTotalDmage(gameDetail);
-  processItemsUrl(gameDetail);
- 
   return {
     type: types.RECEIVE_GAME_DETAIL,
     gameDetail: gameDetail
@@ -41,7 +30,18 @@ export function requestGameDetail(game){
     Api.gameDetail(game.id).then(
       (response) => {
 
-        dispatch(receiveGameDetail(response));
+        let gameDetail = {
+          participants: response.participants,
+          totalDamageDealt: response.totalDamageDealt,
+          totalDamageDealtToChampions: response.totalDamageDealtToChampions,
+          physicalDamageDealtToChampions: response.physicalDamageDealtToChampions,
+          magicDamageDealtToChampions: response.magicDamageDealtToChampions
+        };
+          
+        processTotalDmage(gameDetail);
+        processParticipants(gameDetail);
+ 
+        dispatch(receiveGameDetail(gameDetail));
 
         response.participants.forEach( (participant, index) => {
           Api.championInfo(participant.championId).then( (response) => { 
@@ -75,10 +75,11 @@ function processTotalDmage(gameDetail){
 
 }
 
-function processItemsUrl(gameDetail){
+function processParticipants(gameDetail){
 
   gameDetail.participants.forEach( (participant) => {
 
+    participant.highestAchievedSeasonTier = participant.highestAchievedSeasonTier.titleize();
     for(let i=0; i<=6; i++){
       let itemAttributeName = `item${i}`;
       let itemId = participant.stats[itemAttributeName];
@@ -88,14 +89,4 @@ function processItemsUrl(gameDetail){
   });
 }
 
-function processMasteriesUrl(gameDetail){
 
-   gameDetail.participants.forEach( (participant) => {
-
-    for(let i=1; i<=2; i++){
-      participant[`spell${i}Url`] = Api.spellUrl( participant[`spell${i}Id`]);
-    }
-
-  });
-
-}

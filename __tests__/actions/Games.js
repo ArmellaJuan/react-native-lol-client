@@ -23,7 +23,7 @@ describe('games actions', () => {
       index: 1
     };
 
-    expect(actions.selectGame()).toEqual(expectedAction);
+    expect(actions.selectGame(1)).toEqual(expectedAction);
 
   });
 
@@ -49,7 +49,7 @@ describe('games actions', () => {
       champion: champion
     };
 
-    expect(actions.receiveGameChampionData(champion)).toEqual(expectedAction);
+    expect(actions.receiveGameChampionData(1, champion)).toEqual(expectedAction);
 
   });
 

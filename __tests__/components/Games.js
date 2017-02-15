@@ -68,7 +68,7 @@ test('renders correctly', () => {
 
   const tree = renderer.create(
     <Games games={games} summonerId={1} loading={false} onRequestRecentGames={ () => {} } 
-      onExit= {() => {} } navigator={ new Object() } onGameSelected={ () => {} }
+      onExit= {() => {} } onGameSelected={ () => {} }
     />
   ).toJSON();
   expect(tree).toMatchSnapshot();

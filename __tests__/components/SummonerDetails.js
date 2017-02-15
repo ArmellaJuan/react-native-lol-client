@@ -24,7 +24,7 @@ test('renders correctly', () => {
 
 
   const tree = renderer.create(
-    <SummonerDetails summoner = { summoner } onMatchHistory = { () => {} } />
+    <SummonerDetails summoner = { summoner } onRecentGames = { () => {} } />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

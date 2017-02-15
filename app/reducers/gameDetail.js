@@ -33,7 +33,7 @@ export default function matchs(state = initialState, action = {}) {
       loading: false
     }; 
 
-  case types.CLEAR_SELECTED_GAME:
+  case types.CLEAR_GAME_DETAIL:
       
     return {
       ...state,
@@ -42,8 +42,6 @@ export default function matchs(state = initialState, action = {}) {
     }; 
 
   case types.RECEIVE_PARTICIPANT_CHAMPION:
-
-    console.debug(JSON.stringify(state.gameDetail));
     
     if(state.gameDetail == null){
       return state;

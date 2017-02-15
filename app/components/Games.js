@@ -37,7 +37,7 @@ export default class Games extends Component {
 
   renderRow(gameData) {    
     return (
-      <TouchableHighlight style={ styles.rowContainer } onPress={ ()=>this.props.onGameSelected(this.props.navigator, gameData.index ) } underlayColor='dodgerblue' >
+      <TouchableHighlight style={ styles.rowContainer } onPress={ ()=>this.props.onGameSelected( gameData.index ) } underlayColor='dodgerblue' >
         
         <View style={ [styles.row, gameData.victory? styles.victory : styles.defeat] } >
         
@@ -95,7 +95,6 @@ Games.propTypes = {
   onRequestRecentGames: PropTypes.func.isRequired,
   games: PropTypes.array,
   onExit: PropTypes.func,
-  navigator: PropTypes.object.isRequired,
   onGameSelected: PropTypes.func.isRequired
 };
 

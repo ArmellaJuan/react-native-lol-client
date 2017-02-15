@@ -29,7 +29,7 @@ export default class SummonerDetails extends Component{
           <RowInfo labelStyle={ [styles.label] } label='Losses' value={statistics.losses} />
           <RowInfo labelStyle={ [styles.label] } label='LP' value={statistics.leaguePoints} />
           <Button
-            onPress={ this.props.onMatchHistory } 
+            onPress={ this.props.onRecentGames } 
             title="Recent Games"
             color="dodgerblue"
             style={ styles.summonerDetailButton }
@@ -43,7 +43,7 @@ export default class SummonerDetails extends Component{
 
 SummonerDetails.propTypes ={
   summoner: PropTypes.object.isRequired,
-  onMatchHistory: PropTypes.func.isRequired
+  onRecentGames: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

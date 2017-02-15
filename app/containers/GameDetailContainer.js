@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(gameDetailActions.requestGameDetail(game));
     },
     onExit: () => {
-      dispatch(gameDetailActions.clearSelectedGame());
+      dispatch(gameDetailActions.clearGameDetail());
     },
   };
 };

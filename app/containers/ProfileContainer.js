@@ -1,16 +1,15 @@
 import * as summonerActions from '../actions/summoner';
 import { connect } from 'react-redux';
-
+import {Actions} from 'react-native-router-flux';
 import Profile from '../components/Profile';
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     name: state.summoner.name,
     loading: state.summoner.loading,
     summoner: state.summoner.summoner,
-    found: state.summoner.found,
-    navigator: ownProps.navigator
+    found: state.summoner.found
   };
 };
 
@@ -22,9 +21,9 @@ const mapDispatchToProps = (dispatch) => {
     onChangeSearchSummonerName: (name) =>{
       dispatch(summonerActions.changeSearchSummonerName(name));
     },
-    onRecentGames: () =>{
-      dispatch(summonerActions.requestRecentGames());
-    }
+    onRecentGames: (name) =>{
+      Actions.games({title: `${name}'s Games`});
+    },
   };
 };
 

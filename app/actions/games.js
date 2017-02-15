@@ -34,6 +34,7 @@ export function receiveGameChampionData(index,champion) {
 }
 
 export function requestRecentGames(summonerId){
+
   return function (dispatch){
     Api.recentGames(summonerId).then( (response) => {
 

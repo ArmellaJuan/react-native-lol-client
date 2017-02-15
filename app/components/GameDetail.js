@@ -136,6 +136,10 @@ export default class GameDetail extends Component {
                     <EIcon name="eye-with-line" style= { styles.icon } color="#c6443e" />
                     <Text style= { styles.rowLabel }>{rowData.stats.wardsKilled}</Text>
                 </View>
+                
+                <View style = { styles.statEntry }>
+                    <Text style= { styles.tierLabel }>{rowData.highestAchievedSeasonTier}</Text>
+                </View>
 
               </View>
 
@@ -253,6 +257,10 @@ const styles = StyleSheet.create({
     fontSize: Util.pixelSizeFor(10),
     fontWeight: 'bold'
   },
+  tierLabel: {
+    fontSize: Util.pixelSizeFor(8),
+    fontWeight: 'bold'
+  },
   chartView: {
     height: 35,
     flexDirection: 'row',
@@ -274,7 +282,7 @@ const styles = StyleSheet.create({
     flex:2
   },
   playerStat2Column:{
-    flex: 0.8
+    flex: 1.6
   },
   playerItems: {
     flexDirection: 'column',

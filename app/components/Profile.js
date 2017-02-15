@@ -7,15 +7,11 @@ export default class Profile extends Component {
 
   constructor(props) {
     super(props);
-    this.onMatchHistory = this.onMatchHistory.bind(this);
+    this.onRecentGames = this.onRecentGames.bind(this);
   }
 
-
-  onMatchHistory() {
-    this.props.navigator.push({
-      title:this.props.name + "'s recent games",
-      id: 'matchHistory'
-    }); 
+  onRecentGames(){
+    this.props.onRecentGames(this.props.summoner.name);
   }
 
   summonerDetails() {
@@ -32,7 +28,7 @@ export default class Profile extends Component {
 
     return( 
       <SummonerDetails
-       onMatchHistory={this.onMatchHistory}
+       onRecentGames={this.onRecentGames}
        summoner={this.props.summoner}
        />
     );
@@ -45,7 +41,7 @@ export default class Profile extends Component {
             <TextInput
                 style={{height: 40, backgroundColor: 'white', elevation   : 3}}
                 value={this.props.name}
-                onChangeText={ this.props.onChangeSummonerName }
+                onChangeText={ this.props.onChangeSearchSummonerName }
                 placeholder="Summoner Name"
               />
             <ScrollView>
@@ -65,13 +61,13 @@ export default class Profile extends Component {
 
 
 Profile.propTypes = {
-  navigator: PropTypes.object.isRequired,
   onChangeSearchSummonerName: PropTypes.func.isRequired,
   onFetchSummoner: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   found: PropTypes.bool.isRequired,
   summoner: PropTypes.object,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  onRecentGames: PropTypes.func.isRequired
 };
 
 
