@@ -27,14 +27,50 @@ exports[`test renders correctly 1`] = `
           "padding": 20,
         }
       }>
-      <SummonerDetails
-        onRecentGames={[Function]}
-        summoner={
+      <View
+        style={
           Object {
-            "id": 55899,
-            "name": "Test",
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "elevation": 3,
+            "flex": 1,
+            "justifyContent": "center",
+            "padding": 20,
           }
-        } />
+        }>
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "dodgerblue",
+                "fontSize": 60,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Entypo",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }>
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "fontSize": 15,
+              "textAlign": "center",
+            }
+          }>
+          Search your summoner to gather information about your games!
+        </Text>
+      </View>
     </View>
   </ScrollView>
   <View

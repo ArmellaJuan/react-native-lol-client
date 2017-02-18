@@ -34,8 +34,6 @@ export default function matchs(state = initialState, action = {}) {
   case types.CLEAR_RECENT_GAMES:
 
     return {
-      ...state,
-      games: null,
       loading: true
     };  
 

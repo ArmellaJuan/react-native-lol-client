@@ -9,7 +9,7 @@ import renderer from 'react-test-renderer';
 
 test('renders correctly', () => {
 
-  let games = [
+  const games = [
     {  
       "id":423574538,
       "type":"Normal",

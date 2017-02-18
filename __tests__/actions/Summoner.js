@@ -39,6 +39,16 @@ describe('summoner actions', () => {
 
   });
 
+  it('should create an action to receive a not found summoner', () => {
+
+    const expectedAction = {
+      type: types.RECEIVE_SUMMONER_NOT_FOUND
+    };
+
+    expect(actions.receiveSummonerNotFound()).toEqual(expectedAction);
+
+  });
+
 });
 
 

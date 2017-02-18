@@ -34,10 +34,8 @@ export default function matchs(state = initialState, action = {}) {
     }; 
 
   case types.CLEAR_GAME_DETAIL:
-      
+  
     return {
-      ...state,
-      gameDetail: null,
       loading: true
     }; 
 

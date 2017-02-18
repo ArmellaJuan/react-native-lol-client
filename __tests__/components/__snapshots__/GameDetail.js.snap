@@ -920,7 +920,7 @@ exports[`test renders correctly 1`] = `
                       "paddingRight": 10,
                     },
                     Object {
-                      "flex": 0.8,
+                      "flex": 1.6,
                     },
                   ]
                 }>
@@ -1011,6 +1011,26 @@ exports[`test renders correctly 1`] = `
                         }
                       }>
                       1
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                        "flexDirection": "row",
+                      }
+                    }>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 10,
+                          "fontWeight": "bold",
+                        }
+                      }>
+                      SILVER
                     </Text>
                   </View>
                 </View>
@@ -1413,7 +1433,7 @@ exports[`test renders correctly 1`] = `
                       "paddingRight": 10,
                     },
                     Object {
-                      "flex": 0.8,
+                      "flex": 1.6,
                     },
                   ]
                 }>
@@ -1504,6 +1524,26 @@ exports[`test renders correctly 1`] = `
                         }
                       }>
                       0
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                        "flexDirection": "row",
+                      }
+                    }>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 10,
+                          "fontWeight": "bold",
+                        }
+                      }>
+                      SILVER
                     </Text>
                   </View>
                 </View>

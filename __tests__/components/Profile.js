@@ -16,7 +16,7 @@ test('renders correctly', () => {
   };
 
   const tree = renderer.create(
-    <Profile summoner = { summoner } found = { true } loading = { false } name = 'Test' onFetchSummoner = { () => {} }
+    <Profile summoner = { summoner } found = { true } searched = {false} loading = { false } name = 'Test' onFetchSummoner = { () => {} }
       onChangeSearchSummonerName = { () => {} }  onRecentGames= {() => {} }/>
   ).toJSON();
   expect(tree).toMatchSnapshot();

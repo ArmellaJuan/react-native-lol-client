@@ -14,6 +14,12 @@ export function receiveSummoner(summoner){
   };
 }
 
+export function receiveSummonerNotFound(){
+  return{
+    type: types.RECEIVE_SUMMONER_NOT_FOUND
+  };
+}
+
 export function changeSearchSummonerName(newName){
   return{
     type: types.CHANGE_SEARCH_SUMMONER_NAME,
@@ -30,8 +36,7 @@ export function fetchSummoner(name){
 
     return Api.obtainSummonerData(name).then( 
       (response) => {
-
-
+        //Summoner found
         let lowerCaseName = name.trim().toLowerCase();
         let id =  response[lowerCaseName].id;
         let profileIconUrl = Api.profileIconUrl(response[lowerCaseName].profileIconId);
@@ -44,7 +49,7 @@ export function fetchSummoner(name){
 
         Api.obtainSummonerLeagueData(id).then(
           (response) => {
-
+            //Summoner with league data
             let summonerData =  response[id][0];
             let leagueData = summonerData.entries[0];
 
@@ -62,19 +67,33 @@ export function fetchSummoner(name){
 
           },
 
+          //Summoner without league data
           () => {
 
-            let summonerData = {};
-            summoner.statistics = summonerData;
+            summoner.statistics = generateEmptyStats();
+            dispatch(receiveSummoner(summoner));
 
           }
         );
       },
 
-      () => {
-        
+      (response) => {
+        if(response.status.status_code == 404)
+          //Summoner not found
+          dispatch(receiveSummonerNotFound());
       } );
   };
 
 }
 
+function generateEmptyStats(){
+
+  return {
+    divisionName: 'Unknown',
+    tier: 'UNRANKED',
+    wins: 0,
+    losses: 0,
+    leaguePoints: 0
+  };
+
+}

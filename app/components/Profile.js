@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, Button, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, View, Button, TextInput, Text } from 'react-native';
 
 import SummonerDetails from './SummonerDetails';
+import Icon from 'react-native-vector-icons/Entypo';
+import Util from '../util/Util.js';
 
 export default class Profile extends Component {
 
@@ -22,8 +24,12 @@ export default class Profile extends Component {
           />);
     } 
 
-    if(!this.props.found){
-      return (<View />);
+    if(!this.props.searched){
+      return this.searchSummonerLabel();
+    }
+
+    if(this.props.searched && !this.props.found){
+      return this.notFound();
     }
 
     return( 
@@ -34,6 +40,21 @@ export default class Profile extends Component {
     );
   }
 
+  searchSummonerLabel(){
+    return(
+      <View style={ styles.informationContainer } >
+        <Icon name="arrow-bold-up" size={60} color="dodgerblue" />
+        <Text style={ styles.instructionsLabel } >Search your summoner to gather information about your games!</Text>
+      </View>);
+  }
+
+  notFound(){
+    return(
+      <View style={ styles.informationContainer } >
+        <Icon name="circle-with-minus" size={60} color="red" />
+        <Text style={ styles.instructionsLabel } > Summoner not found, try again with another name.</Text>
+      </View>);
+  }
 
   render() {
     return (
@@ -67,7 +88,8 @@ Profile.propTypes = {
   found: PropTypes.bool.isRequired,
   summoner: PropTypes.object,
   name: PropTypes.string.isRequired,
-  onRecentGames: PropTypes.func.isRequired
+  onRecentGames: PropTypes.func.isRequired,
+  searched: PropTypes.bool.isRequired
 };
 
 
@@ -95,6 +117,17 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     flexDirection: 'column'
+  },
+  informationContainer:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
+    elevation   : 3
+  },
+  instructionsLabel:{
+    fontSize: Util.pixelSizeFor(13),
+    textAlign: 'center'
   }
 });
-

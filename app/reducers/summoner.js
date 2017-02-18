@@ -3,7 +3,8 @@ import * as types from '../actions/types';
 const initialState = {
   loading: false,
   name: 'Rhazkael',
-  found: false
+  found: false,
+  searched: false
 };
 
 export default function summoner(state = initialState, action = {}) {
@@ -26,11 +27,20 @@ export default function summoner(state = initialState, action = {}) {
       found: true
     };  
 
+  case types.RECEIVE_SUMMONER_NOT_FOUND:
+
+    return {
+      ...state,
+      loading: false,
+      found: false
+    };
+
   case types.REQUEST_SUMMONER:
 
     return {
       ...state,
-      loading: true
+      loading: true,
+      searched: true
     };
 
   default:

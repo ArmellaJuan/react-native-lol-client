@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
     name: state.summoner.name,
     loading: state.summoner.loading,
     summoner: state.summoner.summoner,
-    found: state.summoner.found
+    found: state.summoner.found,
+    searched: state.summoner.searched
   };
 };
 
