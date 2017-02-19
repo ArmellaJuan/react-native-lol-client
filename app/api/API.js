@@ -30,7 +30,7 @@ class Api {
 
       let championInfo ={
         ...response,
-        imageUrl: `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/champion/${response.key}.png`,
+        imageUrl: `https://ddragon.leagueoflegends.com/cdn/7.2.1/img/champion/${response.key}.png`,
       };
 
       return championInfo;
@@ -46,11 +46,11 @@ class Api {
   }
 
   static profileIconUrl(iconId){
-    return `http://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/${iconId}.png`;
+    return `https://ddragon.leagueoflegends.com/cdn/7.2.1/img/profileicon/${iconId}.png`;
   }
 
   static itemUrl(itemId){
-    return `http://ddragon.leagueoflegends.com/cdn/7.3.1/img/item/${itemId}.png`;
+    return `https://ddragon.leagueoflegends.com/cdn/7.3.1/img/item/${itemId}.png`;
   }
 
   static gameDetail(id){
