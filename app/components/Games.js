@@ -40,7 +40,7 @@ export default class Games extends Component {
         
         <View style={ [styles.row, gameData.victory? styles.victory : styles.defeat] } >
         
-            <Image style={ styles.image } source={{uri: gameData.champion? gameData.champion.imageUrl : null } } />
+            <Image style={ styles.image } source= { gameData.champion? { uri: gameData.champion.imageUrl } : null } />
             
             <View style= { styles.matchStatFirstColumn } >
               <Text style={ styles.matchType } >{gameData.type}</Text>

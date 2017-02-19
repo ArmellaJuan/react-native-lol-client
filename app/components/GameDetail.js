@@ -37,7 +37,7 @@ export default class GameDetail extends Component {
       <View>
         <View style={styles.container} >
             <View style = { styles.championSection} >
-              <Image style={ styles.image } source={{uri: champion? champion.imageUrl : null}}  />
+              <Image style={ styles.image } source={ champion? { uri: champion.imageUrl } : null }  />
               <Text style ={ styles.headerText } > {champion? champion.name : '' } </Text>
             </View> 
             <View>
@@ -81,7 +81,7 @@ export default class GameDetail extends Component {
       <View style={ [ styles.rowContainer, rowData.teamId == 100? styles.blueTeam : styles.redTeam ] }  >
         <View style={ [styles.row] } >
             <View style = { styles.playerImageColumn }>
-              <Image style={ styles.playerChampImage } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
+              <Image style={ styles.playerChampImage } source={ rowData.champion? { uri: rowData.champion.imageUrl } : null } />
             </View>
 
             <View style= { [ styles.playerStatColumn, styles.playerStat1Column] } >

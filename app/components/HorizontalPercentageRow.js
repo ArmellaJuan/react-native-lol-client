@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     color: 'white',
     paddingTop: 2,
-    paddingLeft: 10
+    paddingLeft: 10,
+    backgroundColor: 'transparent'
   }
 });
 
