@@ -38,7 +38,10 @@ export function requestRecentGames(summonerId){
   return function (dispatch){
     Api.recentGames(summonerId).then( (response) => {
 
-      let games = response.games.map( (value, index) => {
+      //Remove 'none' games
+      let games = response.games.filter( (game) => { return game.subType != 'NONE'; });
+
+      games = games.map( (value, index) => {
         return { 
           id: value.gameId,
           type: Util.parseSubType(value.subType) , 
@@ -52,13 +55,14 @@ export function requestRecentGames(summonerId){
           totalDamageDealt: value.stats.totalDamageDealt,
           totalDamageDealtToChampions: value.stats.totalDamageDealtToChampions,
           physicalDamageDealtToChampions: value.stats.physicalDamageDealtToChampions,
-          magicDamageDealtToChampions: value.stats.magicDamageDealtToChampions
+          magicDamageDealtToChampions: value.stats.magicDamageDealtToChampions,
+          championId: value.championId
         };
       }); 
 
       dispatch(receiveRecentGames(games));
 
-      response.games.forEach( (game, index) => {
+      games.forEach( (game, index) => {
         Api.championInfo(game.championId).then( (response) => { 
           dispatch(receiveGameChampionData(index, response)); 
         },

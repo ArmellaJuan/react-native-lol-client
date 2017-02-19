@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     margin: 20
   },
   headerText: {
-    fontSize:  Util.pixelSizeFor(14),
+    fontSize:  14,
     color: 'dodgerblue',
     textAlign: 'center',
     padding: 10
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   image: {
     width: 70, 
     height: 70,
-    borderRadius: 35, 
+    borderRadius: 35
   },
   headerProfile: {
     alignItems: 'center',

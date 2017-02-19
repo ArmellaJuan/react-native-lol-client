@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import Util from '../util/Util.js';
 
 export default class Kda extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ Kda.propTypes = {
 
 const styles = StyleSheet.create({
   kdaLabel:{
-    fontSize: Util.pixelSizeFor(10),
+    fontSize: 10,
     fontWeight: 'bold'
   },
   goodStatLabel: {

@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     elevation   : 3
   },
   instructionsLabel:{
-    fontSize: Util.pixelSizeFor(13),
+    fontSize: 13,
     textAlign: 'center'
   }
 });

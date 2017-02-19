@@ -5,7 +5,6 @@ import RowInfo from './RowInfo';
 import Kda from './Kda';
 
 import Icon from 'react-native-vector-icons/Entypo';
-import Util from '../util/Util.js';
 
 export default class Games extends Component {
   constructor(props) {
@@ -41,7 +40,7 @@ export default class Games extends Component {
         
         <View style={ [styles.row, gameData.victory? styles.victory : styles.defeat] } >
         
-            <Image resizeMode='contain' style={ styles.image } source={{uri: gameData.champion? gameData.champion.imageUrl : null } } />
+            <Image style={ styles.image } source={{uri: gameData.champion? gameData.champion.imageUrl : null } } />
             
             <View style= { styles.matchStatFirstColumn } >
               <Text style={ styles.matchType } >{gameData.type}</Text>
@@ -50,7 +49,7 @@ export default class Games extends Component {
             </View>
             
             <View style= { styles.matchStatsSecondColumn }>
-              <RowInfo valueStyle={ [gameData.victory? styles.victoryLabel : styles.defeatLabel] } fontSize={Util.pixelSizeFor(10)} label='Result' value={gameData.victory? 'Victory' : 'Defeat'} /> 
+              <RowInfo valueStyle={ [gameData.victory? styles.victoryLabel : styles.defeatLabel] } fontSize={10} label='Result' value={gameData.victory? 'Victory' : 'Defeat'} /> 
               <View style={ styles.infoRow } >
                 <Text style={[ styles.infoLabel, { flex: 1 } ]} >KDA</Text>
                 <Kda kills={gameData.kills} deaths={gameData.deaths} assists={gameData.assists} />
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
   infoLabel: {
     flex:1,
     fontWeight: 'bold',
-    fontSize: Util.pixelSizeFor(10)
+    fontSize: 10
   },
   rowContainer:{
     margin: 5,
@@ -151,19 +150,18 @@ const styles = StyleSheet.create({
   image: {
     width: 50, 
     height: 50,
-    flex: 1,
-    borderRadius: 25, 
+    borderRadius: 25
   },
   matchType: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: Util.pixelSizeFor(10),
+    fontSize: 10,
     marginBottom: 2
   },
   timeLabel:{
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: Util.pixelSizeFor(9),
+    fontSize: 10,
   },
   victoryLabel: {
     color: '#1a78ae',

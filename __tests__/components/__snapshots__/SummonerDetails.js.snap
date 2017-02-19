@@ -34,7 +34,7 @@ exports[`test renders correctly 1`] = `
       style={
         Object {
           "color": "dodgerblue",
-          "fontSize": 16,
+          "fontSize": 14,
           "padding": 10,
           "textAlign": "center",
         }

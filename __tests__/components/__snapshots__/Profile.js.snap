@@ -64,7 +64,7 @@ exports[`test renders correctly 1`] = `
           ellipsizeMode="tail"
           style={
             Object {
-              "fontSize": 15,
+              "fontSize": 13,
               "textAlign": "center",
             }
           }>

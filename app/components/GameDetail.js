@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, ScrollView, Image, ListView, ActivityIndicator, View, Text} from 'react-native';
+import { StyleSheet, ScrollView, Image, ListView, ActivityIndicator, View, Text, PixelRatio} from 'react-native';
 
-import Util from '../util/Util.js';
 import RowInfo from './RowInfo';
 import HorizontalPercentageRow from './HorizontalPercentageRow';
 import Kda from './Kda';
@@ -82,7 +81,7 @@ export default class GameDetail extends Component {
       <View style={ [ styles.rowContainer, rowData.teamId == 100? styles.blueTeam : styles.redTeam ] }  >
         <View style={ [styles.row] } >
             <View style = { styles.playerImageColumn }>
-              <Image resizeMode='contain' style={ styles.playerChampImage } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
+              <Image style={ styles.playerChampImage } source={{uri: rowData.champion? rowData.champion.imageUrl : null } } />
             </View>
 
             <View style= { [ styles.playerStatColumn, styles.playerStat1Column] } >
@@ -100,7 +99,6 @@ export default class GameDetail extends Component {
                   </View>
                   
                   <View style = { styles.statEntry }>
-                    <Icon name="sword" style= { styles.icon } color="gray" />
                     <Kda kills={rowData.stats.kills} deaths={rowData.stats.deaths} assists={rowData.stats.assists} />
                   </View>
 
@@ -138,7 +136,7 @@ export default class GameDetail extends Component {
                 </View>
                 
                 <View style = { styles.statEntry }>
-                    <Text style= { styles.tierLabel }>{rowData.highestAchievedSeasonTier}</Text>
+                    <Text numberOfLines={1} style= { styles.tierLabel }>{rowData.highestAchievedSeasonTier}</Text>
                 </View>
 
               </View>
@@ -186,7 +184,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   headerText: {
-    fontSize:  Util.pixelSizeFor(14),
+    fontSize:  14,
     color: 'dodgerblue',
     textAlign: 'center',
     padding: 10
@@ -204,10 +202,9 @@ const styles = StyleSheet.create({
     height: 120
   },
   image: {
-    width: 70, 
+    width:70, 
     height: 70,
-    borderRadius: 35, 
-    flex: 1.2,
+    borderRadius: 35
   },
   playerChampImage:{
     height: 50,
@@ -254,11 +251,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   rowLabel:{
-    fontSize: Util.pixelSizeFor(10),
+    fontSize: 10,
     fontWeight: 'bold'
   },
   tierLabel: {
-    fontSize: Util.pixelSizeFor(8),
+    fontSize: 10,
     fontWeight: 'bold'
   },
   chartView: {
@@ -268,7 +265,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   icon:{
-    fontSize: Util.pixelSizeFor(10),
+    fontSize: 10,
     paddingTop: 3,
     paddingRight: 2
   },
