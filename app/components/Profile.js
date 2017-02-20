@@ -124,7 +124,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
-    elevation   : 3
+    elevation   : 3,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.5
   },
   instructionsLabel:{
     fontSize: 13,

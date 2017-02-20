@@ -27,7 +27,7 @@ export default class LolClientApp extends Component {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
-    marginTop: 50
+    marginTop: 70
   },
   navigationBar:{
     backgroundColor: 'dodgerblue',
