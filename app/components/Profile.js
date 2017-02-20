@@ -60,7 +60,7 @@ export default class Profile extends Component {
     return (
           <View style={styles.profile}>
             <TextInput
-                style={ [{height: 40, padding: 10, backgroundColor: 'white'}, GlobalStyles.shadow ]}
+                style={ [ styles.checkSummoner, GlobalStyles.shadow ]}
                 value={this.props.name}
                 onChangeText={ this.props.onChangeSearchSummonerName }
                 placeholder="Summoner Name"
@@ -96,6 +96,12 @@ Profile.propTypes = {
 const styles = StyleSheet.create({
   rowInfoLabel: {
     flex: 1
+  },
+  checkSummoner:{ 
+    fontSize: 12, 
+    height: 40, 
+    padding: 10, 
+    backgroundColor: 'white'
   },
   loading: {
     alignItems: 'center',
