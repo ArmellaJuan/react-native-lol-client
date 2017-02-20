@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Actions, Scene, Router} from 'react-native-router-flux';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 import GamesContainer from '../containers/GamesContainer';
 import ProfileContainer from '../containers/ProfileContainer';
@@ -27,7 +27,7 @@ export default class LolClientApp extends Component {
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
-    marginTop: 60
+    marginTop: (Platform.OS === 'ios') ? 60 : 50
   },
   navigationBar:{
     backgroundColor: 'dodgerblue',
