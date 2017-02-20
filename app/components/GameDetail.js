@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, ScrollView, Image, ListView, ActivityIndicator, View, Text, PixelRatio} from 'react-native';
+import { StyleSheet, ScrollView, Image, ListView, ActivityIndicator, View, Text} from 'react-native';
 
 import RowInfo from './RowInfo';
 import HorizontalPercentageRow from './HorizontalPercentageRow';
@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
 import EIcon from 'react-native-vector-icons/Entypo';
 
+import GlobalStyles from '../util/globalStyles';
 
 
 export default class GameDetail extends Component {
@@ -35,7 +36,7 @@ export default class GameDetail extends Component {
 
     return(
       <View>
-        <View style={styles.container} >
+        <View style={ [styles.container, GlobalStyles.shadow ]} >
             <View style = { styles.championSection} >
               <Image style={ styles.image } source={ champion? { uri: champion.imageUrl } : null }  />
               <Text style ={ styles.headerText } > {champion? champion.name : '' } </Text>
@@ -78,7 +79,7 @@ export default class GameDetail extends Component {
   renderRow(rowData) {
 
     return (
-      <View style={ [ styles.rowContainer, rowData.teamId == 100? styles.blueTeam : styles.redTeam ] }  >
+      <View style={ [ styles.rowContainer, GlobalStyles.shadow, rowData.teamId == 100? styles.blueTeam : styles.redTeam ] }  >
         <View style={ [styles.row] } >
             <View style = { styles.playerImageColumn }>
               <Image style={ styles.playerChampImage } source={ rowData.champion? { uri: rowData.champion.imageUrl } : null } />
@@ -192,7 +193,6 @@ const styles = StyleSheet.create({
   rowContainer:{
     marginBottom: 5,
     marginTop: 5,
-    elevation: 3,
     backgroundColor: 'white',
     marginLeft: 1,
     marginRight: 1
@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: 'column',
     backgroundColor: 'white',
-    elevation: 3,
     justifyContent: 'flex-start',
     marginBottom: 5,
     marginLeft: 1,

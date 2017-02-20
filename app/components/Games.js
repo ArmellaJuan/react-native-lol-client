@@ -6,6 +6,8 @@ import Kda from './Kda';
 
 import Icon from 'react-native-vector-icons/Entypo';
 
+import GlobalStyles from '../util/globalStyles';
+
 export default class Games extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +38,7 @@ export default class Games extends Component {
 
   renderRow(gameData) {    
     return (
-      <TouchableHighlight style={ styles.rowContainer } onPress={ ()=>this.props.onGameSelected( gameData.index ) } underlayColor='dodgerblue' >
+      <TouchableHighlight style={ [ styles.rowContainer, GlobalStyles.shadow ] } onPress={ ()=>this.props.onGameSelected( gameData.index ) } underlayColor='dodgerblue' >
         
         <View style={ [styles.row, gameData.victory? styles.victory : styles.defeat] } >
         
@@ -120,7 +122,6 @@ const styles = StyleSheet.create({
   },
   rowContainer:{
     margin: 5,
-    elevation: 3,
     backgroundColor: 'white'
   },
   row: {
@@ -129,11 +130,6 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
     alignItems: 'center',
-  },
-  rowData:{
-    padding: 20,
-    elevation   : 3,
-    textAlign: 'center'
   },
   victory: {
     backgroundColor: '#d4e7f7'

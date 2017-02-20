@@ -53,11 +53,22 @@ exports[`test renders correctly 1`] = `
               Object {
                 "backgroundColor": "transparent",
               },
-              Object {
-                "backgroundColor": "white",
-                "elevation": 3,
-                "margin": 5,
-              },
+              Array [
+                Object {
+                  "backgroundColor": "white",
+                  "margin": 5,
+                },
+                Object {
+                  "elevation": 3,
+                  "shadowColor": "#000000",
+                  "shadowOffset": Object {
+                    "height": 1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.5,
+                  "shadowRadius": 2,
+                },
+              ],
             ]
           }
           testID={undefined}>
@@ -77,11 +88,7 @@ exports[`test renders correctly 1`] = `
               ]
             }>
             <Image
-              source={
-                Object {
-                  "uri": null,
-                }
-              }
+              source={null}
               style={
                 Object {
                   "borderRadius": 25,
@@ -357,11 +364,22 @@ exports[`test renders correctly 1`] = `
               Object {
                 "backgroundColor": "transparent",
               },
-              Object {
-                "backgroundColor": "white",
-                "elevation": 3,
-                "margin": 5,
-              },
+              Array [
+                Object {
+                  "backgroundColor": "white",
+                  "margin": 5,
+                },
+                Object {
+                  "elevation": 3,
+                  "shadowColor": "#000000",
+                  "shadowOffset": Object {
+                    "height": 1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.5,
+                  "shadowRadius": 2,
+                },
+              ],
             ]
           }
           testID={undefined}>
@@ -381,11 +399,7 @@ exports[`test renders correctly 1`] = `
               ]
             }>
             <Image
-              source={
-                Object {
-                  "uri": null,
-                }
-              }
+              source={null}
               style={
                 Object {
                   "borderRadius": 25,

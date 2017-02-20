@@ -17,16 +17,27 @@ exports[`test renders correctly 1`] = `
       <View>
         <View
           style={
-            Object {
-              "backgroundColor": "white",
-              "elevation": 3,
-              "flexDirection": "column",
-              "justifyContent": "flex-start",
-              "marginBottom": 5,
-              "marginLeft": 1,
-              "marginRight": 1,
-              "padding": 20,
-            }
+            Array [
+              Object {
+                "backgroundColor": "white",
+                "flexDirection": "column",
+                "justifyContent": "flex-start",
+                "marginBottom": 5,
+                "marginLeft": 1,
+                "marginRight": 1,
+                "padding": 20,
+              },
+              Object {
+                "elevation": 3,
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 1,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.5,
+                "shadowRadius": 2,
+              },
+            ]
           }>
           <View
             style={
@@ -36,11 +47,7 @@ exports[`test renders correctly 1`] = `
               }
             }>
             <Image
-              source={
-                Object {
-                  "uri": null,
-                }
-              }
+              source={null}
               style={
                 Object {
                   "borderRadius": 35,
@@ -268,6 +275,7 @@ exports[`test renders correctly 1`] = `
                   ellipsizeMode="tail"
                   style={
                     Object {
+                      "backgroundColor": "transparent",
                       "color": "white",
                       "paddingLeft": 10,
                       "paddingTop": 2,
@@ -342,6 +350,7 @@ exports[`test renders correctly 1`] = `
                   ellipsizeMode="tail"
                   style={
                     Object {
+                      "backgroundColor": "transparent",
                       "color": "white",
                       "paddingLeft": 10,
                       "paddingTop": 2,
@@ -416,6 +425,7 @@ exports[`test renders correctly 1`] = `
                   ellipsizeMode="tail"
                   style={
                     Object {
+                      "backgroundColor": "transparent",
                       "color": "white",
                       "paddingLeft": 10,
                       "paddingTop": 2,
@@ -490,6 +500,7 @@ exports[`test renders correctly 1`] = `
                   ellipsizeMode="tail"
                   style={
                     Object {
+                      "backgroundColor": "transparent",
                       "color": "white",
                       "paddingLeft": 10,
                       "paddingTop": 2,
@@ -528,11 +539,20 @@ exports[`test renders correctly 1`] = `
               Array [
                 Object {
                   "backgroundColor": "white",
-                  "elevation": 3,
                   "marginBottom": 5,
                   "marginLeft": 1,
                   "marginRight": 1,
                   "marginTop": 5,
+                },
+                Object {
+                  "elevation": 3,
+                  "shadowColor": "#000000",
+                  "shadowOffset": Object {
+                    "height": 1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.5,
+                  "shadowRadius": 2,
                 },
                 Object {
                   "backgroundColor": "#d4e7f7",
@@ -562,11 +582,7 @@ exports[`test renders correctly 1`] = `
                   }
                 }>
                 <Image
-                  source={
-                    Object {
-                      "uri": null,
-                    }
-                  }
+                  source={null}
                   style={
                     Object {
                       "borderRadius": 25,
@@ -1017,11 +1033,20 @@ exports[`test renders correctly 1`] = `
               Array [
                 Object {
                   "backgroundColor": "white",
-                  "elevation": 3,
                   "marginBottom": 5,
                   "marginLeft": 1,
                   "marginRight": 1,
                   "marginTop": 5,
+                },
+                Object {
+                  "elevation": 3,
+                  "shadowColor": "#000000",
+                  "shadowOffset": Object {
+                    "height": 1,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.5,
+                  "shadowRadius": 2,
                 },
                 Object {
                   "backgroundColor": "#f1dcda",
@@ -1051,11 +1076,7 @@ exports[`test renders correctly 1`] = `
                   }
                 }>
                 <Image
-                  source={
-                    Object {
-                      "uri": null,
-                    }
-                  }
+                  source={null}
                   style={
                     Object {
                       "borderRadius": 25,

@@ -1,12 +1,23 @@
 exports[`test renders correctly 1`] = `
 <View
   style={
-    Object {
-      "backgroundColor": "white",
-      "elevation": 3,
-      "flexDirection": "column",
-      "padding": 20,
-    }
+    Array [
+      Object {
+        "backgroundColor": "white",
+        "flexDirection": "column",
+        "padding": 20,
+      },
+      Object {
+        "elevation": 3,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.5,
+        "shadowRadius": 2,
+      },
+    ]
   }>
   <View
     style={

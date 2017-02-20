@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet,  Image, View, Text, Button } from 'react-native';
 
 import RowInfo from './RowInfo';
-import Util from '../util/Util.js';
+
+import GlobalStyles from '../util/globalStyles';
 
 export default class SummonerDetails extends Component{
 
@@ -18,7 +19,7 @@ export default class SummonerDetails extends Component{
     let statistics = summoner.statistics;
 
     return (
-        <View  style = { styles.details }>
+        <View  style = { [ styles.details, GlobalStyles.shadow ] }>
           <View style = { styles.headerProfile} >
             <Image style={ styles.image } source={{uri: summoner.profileIconUrl}}  />
             <Text style ={ styles.headerText } > {summoner.name} </Text>
@@ -68,7 +69,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
     padding: 20,
-    elevation   : 3
   },
   label: {
     color: 'dodgerblue'

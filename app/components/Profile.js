@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, ActivityIndicator, View, Button, TextInput, Tex
 
 import SummonerDetails from './SummonerDetails';
 import Icon from 'react-native-vector-icons/Entypo';
-import Util from '../util/Util.js';
+import GlobalStyles from '../util/globalStyles';
 
 export default class Profile extends Component {
 
@@ -42,7 +42,7 @@ export default class Profile extends Component {
 
   searchSummonerLabel(){
     return(
-      <View style={ styles.informationContainer } >
+      <View style={ [styles.informationContainer, GlobalStyles.shadow] } >
         <Icon name="arrow-bold-up" size={60} color="dodgerblue" />
         <Text style={ styles.instructionsLabel } >Search your summoner to gather information about your games!</Text>
       </View>);
@@ -60,7 +60,7 @@ export default class Profile extends Component {
     return (
           <View style={styles.profile}>
             <TextInput
-                style={{height: 40, backgroundColor: 'white', elevation   : 3}}
+                style={ [{height: 40, backgroundColor: 'white'}, GlobalStyles.shadow ]}
                 value={this.props.name}
                 onChangeText={ this.props.onChangeSearchSummonerName }
                 placeholder="Summoner Name"
@@ -124,14 +124,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
-    elevation   : 3,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 2,
-    shadowOpacity: 0.5
   },
   instructionsLabel:{
     fontSize: 13,
