@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Platform} from 'react-native';
 import Util from './../util/Util';
  
 export default class HorizontalPercentageRow extends Component {
@@ -42,9 +42,10 @@ const styles = StyleSheet.create({
   valueText:{
     position: 'absolute',
     color: 'white',
-    paddingTop: 2,
+    paddingTop: (Platform.OS === 'ios') ? 5 : 2,
     paddingLeft: 10,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+
   }
 });
 
