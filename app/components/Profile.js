@@ -42,7 +42,7 @@ export default class Profile extends Component {
 
   searchSummonerLabel(){
     return(
-      <View style={ [styles.informationContainer, GlobalStyles.shadow] } >
+      <View style={ [styles.informationContainer, GlobalStyles.shadow ] } >
         <Icon name="arrow-bold-up" size={60} color="dodgerblue" />
         <Text style={ styles.instructionsLabel } >Search your summoner to gather information about your games!</Text>
       </View>);
@@ -50,7 +50,7 @@ export default class Profile extends Component {
 
   notFound(){
     return(
-      <View style={ styles.informationContainer } >
+      <View style={ [styles.informationContainer, GlobalStyles.shadow ] } >
         <Icon name="circle-with-minus" size={60} color="red" />
         <Text style={ styles.instructionsLabel } > Summoner not found, try again with another name.</Text>
       </View>);
@@ -60,7 +60,7 @@ export default class Profile extends Component {
     return (
           <View style={styles.profile}>
             <TextInput
-                style={ [{height: 40, backgroundColor: 'white'}, GlobalStyles.shadow ]}
+                style={ [{height: 40, padding: 10, backgroundColor: 'white'}, GlobalStyles.shadow ]}
                 value={this.props.name}
                 onChangeText={ this.props.onChangeSearchSummonerName }
                 placeholder="Summoner Name"
